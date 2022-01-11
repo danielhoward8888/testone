@@ -1,0 +1,16 @@
+---
+- hosts: all
+  gather_facts: no
+  become: yes
+
+  tasks:
+
+    - name: Create a directory if it doesn't exist
+      file:
+        path: /etc/test
+        state: directory
+
+    - name: copy files from local to remote
+      copy:
+        src: /root/text.txt
+        dest: /etc/test/text.txt
